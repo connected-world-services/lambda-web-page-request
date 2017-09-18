@@ -1,0 +1,11 @@
+{
+    "name": "elastic-search-backup-trigger-lambda",
+    "private": true,
+    "dependencies": {
+        "date.format": "1.1.2",
+        "request": "^2.81.0"
+    },
+    "scripts": {
+        "package-for-deploy": "node -c index.js && rm -rf node_modules/ && npm install && zip -v -r -9 lambda-web-page-request.zip *"
+    }
+}
