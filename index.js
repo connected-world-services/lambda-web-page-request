@@ -47,6 +47,12 @@ function handler(event, context, callback) {
     request(pageRequestConfig, function (error, response, body) {
         var parsed;
 
+        if (error) {
+            console.log("Error reported: " + error.toString());
+
+            return callback(error);
+        }
+
         console.log("Status code: " + response.statusCode);
         console.log(body);
 
