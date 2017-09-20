@@ -45,8 +45,6 @@ function handler(event, context, callback) {
     }
 
     request(pageRequestConfig, function (error, response, body) {
-        var parsed;
-
         if (error) {
             console.log("Error reported: " + error.toString());
 
@@ -58,17 +56,6 @@ function handler(event, context, callback) {
 
         if (response.statusCode < 200 || response.statusCode > 299) {
             return callback(new Error("Response code indicates error."));
-        }
-
-        // The response body should be JSON.
-        try {
-            parsed = JSON.parse(body);
-        } catch (e) {
-            return callback(new Error("Unable to parse response body JSON"));
-        }
-
-        if (!parsed.accepted) {
-            return callback(new Error("Snapshot request was not accepted."));
         }
 
         callback();
